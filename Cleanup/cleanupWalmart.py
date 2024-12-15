@@ -6,9 +6,9 @@ import csv
 FILE_INPUT = "C:\ITU\EgneProjekter\Priceconverter\Data\Walmart\WMT_Grocery_202209.csv"
 FILE_OUTPUT = "C:\ITU\EgneProjekter\Priceconverter\Data\Walmart\cleanupWalmart.json"
 
-print("HELLO")
+itemset = {""}
 
-
+print("Cleaning")
 
 def readDataFromCSV():
     data_list = []
@@ -16,11 +16,13 @@ def readDataFromCSV():
         file_reader = csv.reader(csv_read, delimiter=",")
 
         for field in file_reader:
-            if (field[0] != "index"):
+            if (field[0] != "index" and len(field[8]) < 40 and field[8] not in itemset):
                 data_list.append({
                     "name": transfromName(field[8]),
-                    "price": transfromPrice(field[11])
+                    "price": transfromPrice(field[11]),
+                    "type": "Grocery Store"
                 })
+                itemset.add(field[8])
         
         writeToJSON(data_list)
 

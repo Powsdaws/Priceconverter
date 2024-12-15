@@ -20,7 +20,8 @@ def readDataFromCSV():
             if (field[0] != "Name") and field[6] != "0.0":
                 data_list.append({
                     "name": field[1],
-                    "price": field[6]
+                    "price": field[6],
+                    "type": "Game"
                 })
         
         writeToJSON(data_list)

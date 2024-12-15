@@ -6,9 +6,7 @@ import csv
 FILE_INPUT = "C:\ITU\EgneProjekter\Priceconverter\Data\Electronics_bestsellers\dataset.csv"
 FILE_OUTPUT = "C:\ITU\EgneProjekter\Priceconverter\Data\Electronics_bestsellers\cleanElectronics.json"
 
-print("HELLO")
-
-
+print("Cleaning")
 
 def readDataFromCSV():
     data_list = []
@@ -19,7 +17,8 @@ def readDataFromCSV():
             if (field[0] != "date"):
                 data_list.append({
                     "name": transfromName(field[2]),
-                    "price": transfromPrice(field[5])
+                    "price": transfromPrice(field[5]),
+                    "type": "Electronics"
                 })
         
         writeToJSON(data_list)
